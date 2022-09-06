@@ -8,7 +8,7 @@ the Adjusted Gender Pay Gap and the significant variable coefficients.
 # Module content
 CLASS
 - GenderPayGap(df, bifurcate, salary, df_dummy=None, df_significant=None, swap=False)
- METHODS
+METHODS
 - exploratory_data_analysis(self, polyn=2)
 - poly_plot(self, polyn=2)
 - prepare_data (self, max_unique=45, column_to_exp='', exponent=2, 
