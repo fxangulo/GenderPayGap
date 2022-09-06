@@ -1,16 +1,8 @@
 from setuptools import setup, find_packages
 
-with open("README.md", "r") as readme_file:
+with open("README.md", "r", , encoding="utf-8") as readme_file:
     readme = readme_file.read()
 
-requirements = ['scikit-learn',
-          'statsmodels',
-          'seaborn',
-          'matplotlib',
-          'plotly',
-          'numpy',
-          'pandas',
-          'loguru']
 setup(
     name="GenderPayGap",
     version="0.0.1",
@@ -21,9 +13,16 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/fxangulo/GenderPayGap",
     packages=find_packages(),
-    install_requires=requirements,
+    install_requires=['scikit-learn',
+          'statsmodels',
+          'seaborn',
+          'matplotlib',
+          'plotly',
+          'numpy',
+          'pandas',
+          'loguru'],
     classifiers=[
-        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3",
         "License :: MIT License ",
     ],
 )
