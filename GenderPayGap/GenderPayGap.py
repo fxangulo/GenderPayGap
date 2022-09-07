@@ -64,22 +64,15 @@ class GenderPayGap ():
         # Select reference and to-explain groups 
         else: 
             self.pay_gap =pd.DataFrame(df.groupby(bifurcate)[salary].mean()).T
-            first_is_higher= self.pay_gap.iloc[:,0].values[0] > self.pay_gap.iloc[:,1].values[0]
-            if (first_is_higher == True) and (swap == False):
-                self.reference= self.pay_gap.columns[0] 
-                self.to_explain= self.pay_gap.columns[1]
-                self.pay_gap['RawGAP'] = self.pay_gap.iloc[:,0].sub(self.pay_gap.iloc[:,1], axis=0)
-                self.pay_gap['%RawGAP']= self.pay_gap['RawGAP'].div(self.pay_gap.iloc[:,0])*100
-            elif (first_is_higher != True) and (swap != False):
-                self.reference= self.pay_gap.columns[0] 
-                self.to_explain= self.pay_gap.columns[1]
-                self.pay_gap['RawGAP'] = self.pay_gap.iloc[:,0].sub(self.pay_gap.iloc[:,1], axis=0)
-                self.pay_gap['%RawGAP']= self.pay_gap['RawGAP'].div(self.pay_gap.iloc[:,0])*100
-            else:
-                self.reference= self.pay_gap.columns[1] 
-                self.to_explain= self.pay_gap.columns[0]
-                self.pay_gap['RawGAP'] = self.pay_gap.iloc[:,1].sub(self.pay_gap.iloc[:,0], axis=0)
-                self.pay_gap['%RawGAP']= self.pay_gap['RawGAP'].div(self.pay_gap.iloc[:,1])*100
+            if swap != False:
+                # Rearrange reference and to explain columns
+                cols= self.pay_gap.columns.tolist()[::-1]
+                self.pay_gap=self.pay_gap[cols]
+            
+            self.reference= self.pay_gap.columns[0] 
+            self.to_explain= self.pay_gap.columns[1]
+            self.pay_gap['RawGAP'] = self.pay_gap.iloc[:,0].sub(self.pay_gap.iloc[:,1], axis=0)
+            self.pay_gap['%RawGAP']= self.pay_gap['RawGAP'].div(self.pay_gap.iloc[:,0])*100
 
             self.df=df # The dataframe with all variables
             self.bifurcate=bifurcate # A string with the name of the column
