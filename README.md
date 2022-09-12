@@ -1,6 +1,8 @@
 # GenderPayGap
 Provides methods to automate the Gender Pay Gap analysis. It performs the exploratory data analysis and data modeling to obtain the Salary Gap Decomposition, the Adjusted Gender Pay Gap and the significant variable coefficients. 
 
+More info at: https://medium.com/@fxangulo/an-employers-module-for-gender-pay-gap-analysis-4a13f61a7df1
+
 # Description
 This module provides methods to automate the Gender Pay Gap analysis. 
 It performs the exploratory data analysis and data modeling to obtain the Salary Gap Decomposition, 
